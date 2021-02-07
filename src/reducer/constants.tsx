@@ -1,0 +1,10 @@
+export const DAY_PRESS_SELECTED = 'DAY_PRESS_SELECTED';
+export const GET_LIST_BANNER = 'GET_LIST_BANNER';
+export const UPDATE_STATE = 'UPDATE_STATE';
+export const GET_LIST_SERVICE = 'GET_LIST_SERVICE';
+export const SET_LOADING = 'SET_LOADING';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+
+
+
+
