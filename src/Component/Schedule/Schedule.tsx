@@ -17,39 +17,40 @@ const Schedule = (props: any) => {
     const [daySelected, setDaySelected] = useState(currentMoment.format("YYYY-MM-DD"))
     const [hourSelected, setHourSelected] = useState(null)
     const [serviceSelected, setServiceSelected] = useState(null)
+    const [note, setNote] = useState("")
     useEffect(() => {
     }, [user])
     const handlePress = () => {
         // props.navigation.navigate("ScheduleSuccess")
 
-        if(user == null){
-            props.navigation.navigate("Login",{from : "Schedule"})
+        if (user == null) {
+            props.navigation.navigate("Login", { from: "Schedule" })
             return false
         }
 
-        if(daySelected == null){
+        if (daySelected == null) {
             Toast.show({
                 type: 'info',
                 text1: 'Xin lỗi! Bạn chưa chọn ngày',
             });
             return false
         }
-        if(hourSelected == null){
+        if (hourSelected == null) {
             Toast.show({
                 type: 'info',
                 text1: 'Xin lỗi! Bạn chưa chọn giờ',
             });
             return false
         }
-        if(serviceSelected == null){
+        if (serviceSelected == null) {
             Toast.show({
                 type: 'info',
                 text1: 'Xin lỗi! Bạn chưa chọn dịch vụ',
             });
             return false
         }
-        if(user != null && daySelected != null && hourSelected != null && serviceSelected != null){
-            props.navigation.push("ScheduleConfirm",{customer : user,time: `${daySelected} ${hourSelected}`,service : serviceSelected})
+        if (user != null && daySelected != null && hourSelected != null && serviceSelected != null) {
+            props.navigation.push("ScheduleConfirm", { customer: user, time: `${daySelected} ${hourSelected}`, service: serviceSelected, note : note })
         }
     }
     const handleChangeDaySelected = (day: any) => {
@@ -61,6 +62,9 @@ const Schedule = (props: any) => {
     const handleChangeServiceSelected = (service: any) => {
         setServiceSelected(service)
     }
+    const onChangeText = (text : any) => {
+        setNote(text)
+    }
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.view}>
@@ -69,32 +73,32 @@ const Schedule = (props: any) => {
             </View>
             <View style={styles.view}>
                 <Text h4 style={styles.text}>2. Chọn Giờ</Text>
-                <TimeWrapper handleChangeHourSelected={(day: any) => handleChangeHourSelected(day)} daySelected={daySelected} hourSelected={hourSelected} />
+                <TimeWrapper handleChangeHourSelected={(day: any) => handleChangeHourSelected(day)} handleChangeNote={(text: any)=>onChangeText(text)} daySelected={daySelected} hourSelected={hourSelected} />
             </View>
             <View style={{ ...styles.view }}>
                 <Text h4 style={styles.text}>3. Chọn Dịch Vụ</Text>
-                <Service serviceSelected={serviceSelected} handleChangeServiceSelected={(service: any) => handleChangeServiceSelected(service)} />
-                <Text style={{ fontSize: 18, marginTop: 10, marginBottom: 10 }}>Mời bạn chọn dịch vụ của chúng tôi. Sau đó chúng tôi sẽ sắp xếp liên hệ lại với bạn</Text>
+                <Service serviceSelected={serviceSelected} onChangeText={(text : any) => onChangeText(text)} handleChangeServiceSelected={(service: any) => handleChangeServiceSelected(service)} />
+                <Text style={{ fontSize: 18, marginTop: 10, marginBottom: 10 }}>Sau khi bạn chọn dịch vụ của chúng tôi. Sau đó chúng tôi sẽ sắp xếp liên hệ lại với bạn</Text>
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                     <Button
                         type="outline"
                         buttonStyle={{
                             margin: 'auto',
-                            borderColor: "#9534eb"
+                            borderColor: "#f070a0"
                         }}
                         containerStyle={{
                             margin: "auto",
                             justifyContent: "center",
                         }}
                         titleStyle={{
-                            color: "#9534eb",
+                            color: "#f070a0",
                             marginLeft: 5
                         }}
                         icon={
                             <Icon
                                 name="check"
                                 size={15}
-                                color="#9534eb"
+                                color="#f070a0"
                             />
                         }
                         title="Xác nhận lịch đặt"
@@ -119,7 +123,7 @@ const styles = StyleSheet.create({
     },
     text: {
         marginBottom: 10,
-        color: "#9534eb"
+        color: "#f070a0"
     }
 })
 export default Schedule

@@ -6,7 +6,7 @@ const win: any = Dimensions.get('window');
 const menuWidth = (win.width * 85) / 100
 const Menu = (props: any) => {
     return (
-        <View style={{ justifyContent: 'center', marginTop: 50, marginBottom: 50, marginLeft: ((win.width / 2) - (menuWidth / 2)) }}>
+        <View style={{ justifyContent: 'center', marginTop: 10, marginBottom: 10, marginLeft: ((win.width / 2) - (menuWidth / 2)) }}>
             <View style={{
                 backgroundColor: '#fff',
                 borderRadius: 6,
@@ -23,9 +23,8 @@ const Menu = (props: any) => {
                 padding: 10
             }}>
                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', }}>
-                    <MenuItem />
-                    <MenuItem />
-                    <MenuItem />
+                    <MenuItem navigation={props.navigation} icon="calendar" to={"Schedule"} title="Đặt lịch" />
+                    <MenuItem navigation={props.navigation} icon="history" to={"History"} title="Lịch sử" />
                 </View>
             </View>
         </View>

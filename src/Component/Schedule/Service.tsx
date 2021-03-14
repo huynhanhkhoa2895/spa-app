@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View,Platform } from 'react-native';
+import { View, Platform, TextInput } from 'react-native';
 import { Text } from 'react-native-elements';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,7 +22,10 @@ const Service = (props: any) => {
             setData(_data)
         }
     }, [services])
-    const handleChange = (item : any) => {
+    const onChangeText = (text: any) => {
+        props.handleChangeNote(text)
+    }
+    const handleChange = (item: any) => {
         props.handleChangeServiceSelected(item)
     }
     return (
@@ -39,14 +42,22 @@ const Service = (props: any) => {
                         items={data}
                         placeholder="--- Mời bạn chọn Dịch vụ TML"
                         containerStyle={{ height: 40 }}
-                        activeLabelStyle={{ color: '#9534eb' }}
-                        labelStyle={{ fontSize: 14, color: '#9534eb' }}
+                        activeLabelStyle={{ color: '#f070a0' }}
+                        labelStyle={{ fontSize: 14, color: '#f070a0' }}
                         dropDownMaxHeight={100}
                         onChangeItem={item => handleChange(item)}
                     />
                 )
             }
-
+            <View style={{marginTop: 10,marginBottom: 10}}>
+                <Text>Ghi chú</Text>
+                <View style={{ borderColor: "#ccc", borderWidth: 1, }}>
+                    <TextInput
+                        multiline={true}
+                        onChangeText={(text) => onChangeText({ text })}
+                    />
+                </View>
+            </View>
         </View>
     )
 }

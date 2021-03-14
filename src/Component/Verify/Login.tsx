@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Image, Input } from 'react-native-elements';
@@ -56,7 +56,7 @@ const Login = (props: any) => {
     }
     if (checkPhone && chekPassWord) {
 
-      axios.post(DOMAIN + "login", { phone: phone, password: password }).then((result: any) => {
+      axios.post(DOMAIN + "login", { phone: phone, password: password, spa: Config.SPA }).then((result: any) => {
         const data = result.data;
         if (data.err == 0) {
           const user = { ...data.user, ...{ token: data.token } }
@@ -82,7 +82,7 @@ const Login = (props: any) => {
     }
   }
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#9534eb" }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#f070a0" }}>
       <Image
         source={require('../../../asset/img/logo.png')}
         style={styles.stretch}

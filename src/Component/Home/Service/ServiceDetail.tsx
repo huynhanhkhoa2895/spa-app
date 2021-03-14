@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View,Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { Button, Text } from 'react-native-elements';
 import Config from '../../../Config';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,28 +10,28 @@ const ServiceDetail = (props: any) => {
     const user = useSelector(selectorUser())
     const url = Config.API_URL + '/img/service/' + service.img;
     const handlePress = () => {
-        if(user == null){
-            props.navigation.navigate("Login",{from : "Schedule"})
-        }else{
+        if (user == null) {
+            props.navigation.navigate("Login", { from: "Schedule" })
+        } else {
             props.navigation.navigate("Schedule")
         }
     }
     return (
-        <View style={{padding: 10}}>
+        <View style={{ padding: 10 }}>
             <Text h3>Dịch vụ {service.name}</Text>
-            <Image style={{width: "100%", height: 200,}} source={{uri : url}} />
-            <Text style={{textAlign: "justify",margin: 5}}>{service.content}</Text>
-            <Button 
-                onPress={()=>handlePress()}
+            <Image style={{ width: "100%", height: 200, }} source={{ uri: url }} />
+            <Text style={{ textAlign: "justify", margin: 5 }}>{service.content}</Text>
+            <Button
+                onPress={() => handlePress()}
                 buttonStyle={{
                     margin: 'auto',
                     borderColor: "#fff",
-                    backgroundColor: "#9534eb"
+                    backgroundColor: "#f070a0"
                 }}
                 containerStyle={{
                     margin: "auto",
                     // flex : 1,alignItems: "center",justifyContent: "center",
-                    backgroundColor: "#9534eb"
+                    backgroundColor: "#f070a0"
                 }}
                 titleStyle={{
                     color: "#fff",
@@ -39,12 +39,12 @@ const ServiceDetail = (props: any) => {
                 }}
                 icon={
                     <Icon
-                    name="calendar"
-                    size={15}
-                    color="#fff"
+                        name="calendar"
+                        size={15}
+                        color="#fff"
                     />
                 }
-                title="Đặt lịch" 
+                title="Đặt lịch"
             />
         </View>
     )

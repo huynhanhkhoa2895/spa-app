@@ -11,7 +11,9 @@ const initialState = {
     },
     loading: false,
     user: null,
-    service: []
+    service: [],
+    product: [],
+    category: [],
 }
 let newState : any = {...initialState};
 export function reducer(state: any = initialState, action: any) {
