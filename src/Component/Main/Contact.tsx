@@ -24,12 +24,12 @@ const Contact = (props: any) => {
     return (
         <View>
             <Card>
-                <Card.Title>HELLO WORLD</Card.Title>
+                <Card.Title>SPA {spa.name}</Card.Title>
                 <Card.Divider />
                 <Card.Image source={require('../../../asset/img/logo.png')} />
                 <View style={{ marginTop: 10 }}>
                     {
-                        agency.map((item : any)=>
+                        agency != null && agency.map((item : any)=>
                             <View key={item.id} style={{ marginBottom: 10 }}>
                                 <Text><Text style={{fontWeight: "bold"}}>{item.name}</Text>: {item.address}</Text>
                             </View>

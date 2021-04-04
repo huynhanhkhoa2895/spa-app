@@ -1,5 +1,5 @@
 const Config = {
-   API_URL: "http://172.18.15.97:8000",
+   API_URL: "http://order-api.sega-group.com",
    SPA: 1,
 }
 export default Config

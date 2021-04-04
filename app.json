@@ -29,6 +29,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "SPA APP",
+    "githubUrl": "https://github.com/huynhanhkhoa2895/spa-app"
   }
 }
